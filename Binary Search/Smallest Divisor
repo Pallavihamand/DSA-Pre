@@ -1,0 +1,23 @@
+class Solution:
+    def smallestDivisor(self, nums, threshold):
+        def ceil_div(a, b):
+            return (a + b - 1) // b  # manual ceil
+
+        def sum_by_divisor(arr, div):
+            total = 0
+            for num in arr:
+                total += ceil_div(num, div)
+            return total
+
+        low = 1
+        high = max(nums)
+        ans = -1
+
+        while low <= high:
+            mid = (low + high) // 2
+            if sum_by_divisor(nums, mid) <= threshold:
+                ans = mid
+                high = mid - 1
+            else:
+                low = mid + 1
+        return ans
