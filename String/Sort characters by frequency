@@ -1,0 +1,6 @@
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        freq=Counter(s)
+        sorted_char=sorted(freq.keys(),key=lambda ch: freq[ch],reverse=True)
+        result="".join(ch*freq[ch] for ch in sorted_char)
+        return result
