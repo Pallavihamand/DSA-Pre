@@ -1,0 +1,8 @@
+class Solution:
+    def searchKey(self, head, key):
+        temp=head
+        while temp:
+            if temp.val==key:
+                return True
+            temp=temp.next
+        return False
