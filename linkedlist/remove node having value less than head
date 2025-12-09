@@ -1,0 +1,30 @@
+class Solution:
+    def removeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev=None
+        curr=head
+        while curr:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+        max_val = prev.val
+        dummy = ListNode(0)
+        tail = dummy
+        curr = prev
+        while curr:
+            if curr.val >= max_val:
+                tail.next = curr
+                tail = curr
+                max_val = curr.val
+            curr = curr.next
+        tail.next = None
+        prev = None
+        curr = dummy.next
+        while curr:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+
+        return prev
+        
